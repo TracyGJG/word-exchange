@@ -1,0 +1,43 @@
+{
+  "name": "word-exchange",
+  "version": "1.0.0",
+  "description": "A simple utility for globally replacing text in an application",
+  "main": "index.js",
+  "type": "module",
+  
+  "scripts": {
+    "test": "node --test",
+    "watch": "node --test --watch",
+    "coverage": "c8 node --test",
+    "coverage:ui": "http-server ./coverage -o lcov-report/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TracyGJG/word-exchange.git"
+  },
+  "keywords": [
+    "Exchange",
+    "Words",
+    "localisation",
+    "localization",
+    "L10n"
+  ],
+  "author": "Tracy-G J Gilmore",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/TracyGJG/word-exchange/issues"
+  },
+  "homepage": "https://github.com/TracyGJG/word-exchange#readme",
+  "devDependencies": {
+    "c8": "^10.1.3",
+    "http-server": "^14.1.1"
+  },
+  "c8": {
+    "exclude": [
+      "**/*.test.*"
+    ],
+    "reporter": [
+      "lcov"
+    ]
+  }
+}
