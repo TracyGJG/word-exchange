@@ -54,11 +54,39 @@ describe('Word Exchange', () => {
       assert.equal(console.warn.mock.callCount(), 1);
     });
 
-    it('can resolve a keyword (matching case)', (ctxt) => {
+    it('can resolve a keyword', (ctxt) => {
       ctxt.mock.method(console, 'warn', mockWarnConsole);
       assert.equal(console.warn.mock.callCount(), 0);
 
       assert.equal(lookup('Hello'), 'Hi');
+
+      assert.equal(console.warn.mock.callCount(), 0);
+    });
+  });
+
+  describe('multiple lookup', () => {
+    const mockWarnConsole = mock.fn((_) => {});
+
+    const LOOKUP = {
+      French: {
+        Hello: 'Bonjour',
+        World: 'le monde',
+      },
+      German: {
+        Hello: 'Hallo',
+        World: 'Welt',
+      },
+    };
+
+    const lookup = wordExchange(LOOKUP, 'French');
+
+    afterEach(() => mockWarnConsole.mock.resetCalls());
+
+    it('can resolve a keyword', (ctxt) => {
+      ctxt.mock.method(console, 'warn', mockWarnConsole);
+      assert.equal(console.warn.mock.callCount(), 0);
+
+      assert.equal(lookup('Hello'), 'Bonjour');
 
       assert.equal(console.warn.mock.callCount(), 0);
     });
